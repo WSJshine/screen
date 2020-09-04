@@ -1,0 +1,701 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="Css/index.css">
+    <link rel="stylesheet" type="text/css" href="Css/modal.css"/>
+    <link rel="stylesheet" href="Iconfont/iconfont.css">
+    <title>GeoJSON</title>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=cd8c9c7930a7aeefb44288f1f31e52ab"></script>
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+</head>
+<body>
+
+<div id="container">
+    <div class="containers-warp" id="containers-warp">
+
+        <div class="containers-info">
+            <div class="containers-warp">
+                <div class="child-room">
+                    <div class="child-room-title-left">
+                        <div>
+                            <div class="headers-left-title">
+                                <div class="header-title-dian"><span>.</span><span>.</span><span>.</span></div>
+                            </div>
+                            <div>
+                                <div class="order">
+                                    <span class="line"></span>
+                                    <span class="txt">year</span>
+                                    <span class="line"></span>
+                                </div>
+                                <div class="data" id="yearData"></div>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="headers-left-title">
+                                <div class="header-title-dian"><span>.</span><span>.</span><span>.</span></div>
+                            </div>
+                            <div>
+                                <div class="order" style="width: 164px">
+                                    <span class="line" style="width: 30px"></span>
+                                    <span class="txt">Day of the week</span>
+                                    <span class="line" style="width: 30px"></span>
+                                </div>
+                                <div class="data " style="width: 164px" id="weekData"></div>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="headers-left-title">
+                                <div class="header-title-dian"><span>.</span><span>.</span><span>.</span></div>
+                            </div>
+                            <div>
+                                <div class="order">
+                                    <span class="line" style="width: 84px"></span>
+                                    <span class="txt">The Time</span>
+                                    <span class="line" style="width: 84px"></span>
+                                </div>
+                                <div class="data" id = 'timeData'>13:14:52</div>
+                            </div>
+                        </div>
+                        <div>
+
+                            <div class="headers-left-title">
+                                <div class="header-title-dian"><span>.</span><span>.</span><span>.</span></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="child-room-warp-left">
+                        <div class="warp-info-left">
+                            <div class="Modal-left-item">
+                                <div class="header header7">
+                                    <a class="line"></a>
+                                    <span>信访上访总量</span>
+                                    <a class="line1"></a>
+                                </div>
+                                <div class="Satisfaction-warp">
+                                    <div class="Satisfaction-warp-item ">
+                                        <div class="Satisfaction-warp-item-header">
+                                        </div>
+                                        <div class="SmallECharts21" style="height: 400px">
+                                            <div id="SmallECharts21" style="width: 700px;height:360px;margin-left: -100px;margin-top: -30px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="Modal-left-item">
+                                <div class="header header1">
+                                    <a class="line"></a>
+                                    <span>2019年许昌市各地区案件排名</span>
+                                    <a class="line1"></a>
+                                </div>
+                                <div class="Satisfaction-warp">
+                                    <div class="Satisfaction-warp-item">
+                                        <div class="Satisfaction-warp-item-header">
+                                        </div>
+                                        <div class="Satisfaction-warp-item-echarts">
+                                            <div id="SmallECharts13" style="width: 600px;height:300px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="Modal-left-item">
+                                <div class="header header2">
+                                    <a class="line"></a>
+                                    <span>热点问题及重点人员</span>
+                                    <a class="line1"></a>
+                                </div>
+                                <div class="Satisfaction-warp" style="margin-left: -30px">
+
+                                    <div class="Satisfaction-warp-item">
+                                        <div class="Satisfaction-warp-item-header">
+                                            <div class="Satisfaction-warp-item-header-left">
+                                                <div class="banner1 cloudBanner">重点人员</div>
+                                            </div>
+                                        </div>
+                                        <div class="cloudEcharts2">
+                                            <div id="SmallECharts14" style="width: 280px;height:450px;margin-top: -100px"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="Observation">
+                                        <div class="Satisfaction-warp-item">
+                                            <div class="Satisfaction-warp-item-header">
+                                                <div class="Satisfaction-warp-item-header-left">
+                                                    <div class="banner2">热点问题</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="cloudEcharts1"  style="width: 300px;margin-top: -70px;margin-left: -65px">
+    <!--                                            <div id="SmallECharts" style="width: 300px;height:430px;margin-top: -85px"></div>-->
+                                                <div id="rotate">
+                                                    <!--<a target="_blank">农村土地征用</a>
+                                                    <a  target="_blank">城镇房屋拆迁</a>
+                                                    <a  target="_blank">国有企业改制</a>
+                                                    <a  target="_blank">涉法涉诉</a>
+                                                    <a  target="_blank">水库移民安置补偿</a>
+                                                    <a  target="_blank">农民工工资</a>
+                                                    <a target="_blank">企业协解人员</a>
+                                                    <a  target="_blank">环境保护</a>
+                                                    <a  target="_blank">企业退休教师</a>
+                                                    <a  target="_blank">民办教师</a>
+                                                    <a target="_blank">企业军转干部</a>
+                                                    <a  target="_blank">复员退伍军人</a>
+                                                    <a  target="_blank">利益受损人员</a>
+                                                    <a  target="_blank">十九大会议来信</a>
+                                                    <a target="_blank">农民</a>
+                                                    <a target="_blank">农村土地征用</a>
+                                                    <a  target="_blank">城镇房屋拆迁</a>
+                                                    <a target="_blank">国有企业改制</a>
+                                                    <a  target="_blank">涉法涉诉</a>
+                                                    <a target="_blank">水库移民安置补偿</a>
+                                                    <a target="_blank">农民工工资</a>
+                                                    <a  target="_blank">企业协解人员</a>
+                                                    <a   target="_blank">环境保护</a>
+                                                    <a   target="_blank">企业退休教师</a>
+                                                    <a  target="_blank">民办教师</a>
+                                                    <a   target="_blank">企业军转干部</a>
+                                                    <a   target="_blank">复员退伍军人</a>
+                                                    <a   target="_blank">利益受损人员</a>
+                                                    <a   target="_blank">十九大会议来信</a>
+                                                    <a  target="_blank">农民</a>-->
+                                                   <!-- <a href="http://www.baidu.com" target="_blank">产品设计</a>
+                                                    <a href="http://www.baidu.com" target="_blank">包装设计</a>
+                                                    <a href="http://www.baidu.com" target="_blank">Logo设计</a>
+                                                    <a href="http://www.baidu.com" target="_blank">海报设计</a>
+                                                    <a href="http://www.baidu.com" target="_blank">程序开发</a>
+                                                    <a href="http://www.baidu.com" target="_blank">网店推广</a>
+                                                    <a href="http://www.baidu.com" target="_blank">微博营销</a>
+                                                    <a href="http://www.baidu.com" target="_blank">网站开发</a>
+                                                    <a href="http://www.baidu.com" target="_blank">宣传品设计</a>
+                                                    <a href="http://www.baidu.com" target="_blank">配音配词</a>
+                                                    <a href="http://www.baidu.com" target="_blank">产品推广</a>
+                                                    <a href="http://www.baidu.com" target="_blank">网络营销</a>
+                                                    <a href="http://www.baidu.com" target="_blank">动漫设计</a>
+                                                    <a href="http://www.baidu.com" target="_blank">招聘求职</a>
+                                                    <a href="http://www.baidu.com" target="_blank">家居装修</a>
+                                                    <a href="http://www.baidu.com" target="_blank">影视创作</a>
+                                                    <a href="http://www.baidu.com" target="_blank">照片美化</a>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mains">
+                    <div class="headers">
+                        许昌市信访数据分析平台
+                        <div class="small">
+<!--                            2020版-->
+                        </div>
+                    </div>
+                    <a> 许昌市信访数据分析平台</a>
+                    <!--底部-->
+                    <div class="mains1">
+                        <div class="child-room-warp-bottom">
+<!--                            <div class="warp-info-right Modal-left-item">-->
+                                <div class="header bottomHeader">
+                                    <span class="line"></span>
+                                    <span class="bottomSpan">许昌市各市直单位信访量分析</span>
+                                    <span class="line1"></span>
+                                </div>
+                                <div id="SmallEChartsbottom1" style="width: 650px;height:580px;margin-left: -20px;margin-top: -110px"></div>
+<!--                            </div>-->
+                        </div>
+                    </div>
+                    <div class="mains2">
+                        <div class="child-room-warp-bottom">
+                            <!--                            <div class="warp-info-right Modal-left-item">-->
+                            <div class="header bottomHeader">
+                                <span class="line"></span>
+                                <span class="bottomSpan">2019年许昌市信访案件排名前10责任单位</span>
+                                <span class="line1"></span>
+                            </div>
+                            <div id="SmallEChartsbottom2" style="width: 600px;height:380px;margin-top: -20px"></div>
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="child-room">
+                    <div class="child-room-title-right">
+<!--                        123123-->
+                    </div>
+                    <div class="child-room-warp-right">
+                        <div class="warp-info-right Modal-left-item">
+                            <div class="header header1">
+                                <a class="line"></a>
+                                <span>信访案件总量分析</span>
+                                <a class="line1"></a>
+                            </div>
+                            <div class="Satisfaction-warp">
+                                <div class="Satisfaction-warp-item">
+<!--                                    <div class="Satisfaction-warp-item-header">-->
+<!--                                    </div>-->
+                                    <div class="Satisfaction-warp-item-echarts">
+                                        <div id="SmallECharts3" style="width: 780px;height:330px;margin-left: -180px;margin-top: -20px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Modal-left-item2">
+                                <div class="header header5">
+                                    <a class="line"></a>
+                                    <span>信访量数据分析</span>
+                                    <a class="line1"></a>
+                                </div>
+                                <div class="Satisfaction-warp" style="margin-top: 10px">
+                                    <div class="Satisfaction-warp-item Satisfaction-warp-item1">
+<!--                                        <div class="Satisfaction-warp-item-header">-->
+<!--                                            <div class="Satisfaction-warp-item-header-left">-->
+<!--                                                <div class="banner1">基本情况</div>-->
+<!--                                                <div class="banner2">趋势分析</div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                        <div class="radar-echarts1" >
+                                            <div id="SmallECharts6" style="width: 600px;height:250px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Modal-left-item2" >
+                                <div class="header header6">
+                                    <a class="line"></a>
+                                    <span id="myspan">许昌市大数据分析结果</span>
+                                    <a class="line1"></a>
+                                </div>
+                                <div class="Satisfaction-warp">
+                                    <div class="Satisfaction-warp-item Satisfaction-warp-item2">
+                                        <div class="radar-echarts" >
+                                            <div id="SmallECharts232" style="width: 597px;height:155px"></div>
+                                            <div id="SmallECharts23" style="width: 597px;height:255px;"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--底部-->
+<!--                <div class="mains1">-->
+<!--                    <div class="child-room-warp-bottom">-->
+<!--                                                123123-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <!--底部-->
+<!--                            <div class="child-room-bottom">-->
+<!--                                <div class="child-room-warp-bottom">-->
+<!--                                                          55555555555555555555555  123123-->
+<!--                                </div>-->
+<!--                            </div>-->
+            <div id="modalBox" class="modalBox">
+                <div class="modalBox-matter">
+                    <header class="modalBox-header">
+                        <span class="mtclose">×</span>
+                    </header>
+                    <div  id="BigEharts" class="modalBox-body">
+
+                        　　啊实打实大苏打
+
+                        　　</div>
+                    　</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+<script type="text/javascript" src="Js/onload.js"></script>
+<script type="text/javascript" src="Js/Maps.js"></script>
+<script src="Js/store.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<!--引用echarts.js-->
+<script type="text/javascript" src="Js/echarts.min.js"></script>
+<script type="text/javascript" src="Js/MyEcharts.js"></script>
+<script type="text/javascript">
+    var radius = 95;
+    var dtr = Math.PI / 250;
+    var d = 300;
+
+    var mcList = [];
+    var active = false;
+    var lasta = 1;
+    var lastb = 1;
+    var distr = true;
+    var tspeed = 2;
+    var size = 250;
+
+    var mouseX = 0;
+    var mouseY = 0;
+
+    var howElliptical = 1;
+
+    var aA = null;
+    var oDiv = null;
+
+    //数据
+    var totaldata = []
+    var left1;
+    var right1;
+    var scheduled;//按期办结
+    var replyOntime;//按期答复
+    var participate;//参评率
+    var PetitionOntime;//信访部门及时受理率
+    var unitOntime;// 责任单位及时受理率
+    var unitOntimeDone; // 责任单位及时受理
+    var unitPleased; // 责任单位满意度
+    var departmentOntimeDone; //信访部门及时受理
+    var departmentPleased;//信访部门满意度
+    var petition;//信访量数据分析
+    var topTen;//前10街道
+    var cityunitData;//市直单位
+    // var hotques;//热点问题
+
+    window.onload = function () {
+        console.log(window, '进入底层世界')
+
+        // ObservationStationFun()
+        var allData = ObservationStationFun();
+        console.log('所有数据',allData);
+        allData.then(res=>{
+            totaldata = res["案件总数与信访总量"];
+            left1 = totaldata[0];
+            right1 = totaldata[1];
+            MyEcharts.initChart(MyEcharts.EchartsOption.piepie('name',left1), "SmallECharts21")
+            MyEcharts.initChart(MyEcharts.EchartsOption.totalpie('name',right1), "SmallECharts3")
+        })
+        getlocation('总计');
+        /*
+        * 热点问题*/
+        var hots =  hotQuestion();
+        hots.then(res=>{
+            // hotques = res;
+            let para = "";
+            for (let i = 0; i < res.length; i++) {
+                para += '<a  target="_blank">' + res[i].hotspotIssues + '</a>'
+            }
+            console.log('888888888888',para)
+            document.getElementById("rotate").innerHTML = para;
+            sineclond()
+        })
+
+        /*
+        * 前10责任单位*/
+        var unitData = ObservationUnit();
+        unitData.then(res=>{
+            MyEcharts.initChart(MyEcharts.EchartsOption.bargraph('name',res), "SmallEChartsbottom2")
+        })
+        /*
+        * 信访量数据分析*/
+        var petitionData = ObservationPetition();
+        petitionData.then(res=>{
+            petition = res.data["案件总数与信访占比"];
+            MyEcharts.initChart(MyEcharts.EchartsOption.radarpie(petition), "SmallECharts6")
+        })
+        /*
+        * 前10街道*/
+        var topTenData = ObservationtopTen();
+        topTenData.then(res=>{
+            topTen = res.data;
+            MyEcharts.initChart(MyEcharts.EchartsOption.newcolorBar('name', color, topTen), "SmallECharts13")
+        })
+        /*
+        * 市直单位*/
+        var cityUnit = CityUnit();
+        cityUnit.then(res=>{
+            cityunitData = res;
+            // MyEcharts.initChart(MyEcharts.EchartsOption.newcolorBar('name', color, cityunitData), "SmallEChartsbottom1")
+            MyEcharts.initChart(MyEcharts.EchartsOption.newPiegraph(cityunitData), "SmallEChartsbottom1")
+        })
+        /*
+        * 热点问题*/
+        var position = getPosition();
+        position.then(res=>{
+            topTen = res.data;
+        })
+
+
+        var date = new Date();
+        var yearData = date .getFullYear();
+        var monthData = date .getMonth() + 1;
+        var dayData = date .getDate();
+        document.getElementById('yearData').innerText=yearData+'年'+monthData+'月'+dayData+'日';
+        var weekday=['星期天','星期一','星期二','星期三','星期四','星期五','星期六',];
+        document.getElementById('weekData').innerText = weekday[date.getDay()];
+        document.getElementById('timeData').innerText = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+
+
+
+        // ShowWeather(2)
+        //  WaterQuantityFun()
+        // RescueTeam()
+        // WaterAlarm()
+        // OnDutyToday()
+        var mtclose = document.getElementsByClassName('mtclose')[0];
+        var modalBox = document.getElementById('modalBox');
+        mtclose.addEventListener('click', function () {
+            modalBox.style.display = "none";
+        });
+        let para = {
+            xData: ["信访工作机构", "行政机关受理", "行政机关答复"],
+            yData: [2342, 1230, 425]
+        }
+        // echarts图表
+        let data = [
+            {
+                "name": "本单位交办件",
+                "value": 10
+            }, {
+                "name": "本单位承办件",
+                "value": 15
+            }, {
+                "name": "本单位登记件",
+                "value": 15
+            },
+            {
+                "name": "下属单位登记件",
+                "value": 25
+            },
+            {
+                "name": "前台登记件",
+                "value": 10
+            },
+            {
+                "name": "敏感信件",
+                "value": 25
+            },
+        ];
+        let color = [ "#fec101", "#b5b8cd ", "#ff6226","#f60000","#2cc78f","#2ca7f9"]
+        // MyEcharts.initChart(MyEcharts.EchartsOption.graph('name'), "SmallECharts")
+        MyEcharts.initChart(MyEcharts.EchartsOption.scatter('name'), "SmallECharts14")
+
+
+
+        // MyEcharts.initChart(MyEcharts.EchartsOption.newPiegraph('name'), "SmallEChartsbottom1")
+    }
+    function getlocation(location) {
+        var Probability = ObservationProbability(location);
+        Probability.then(res=>{
+            scheduled = res.data["按期办结率"];
+            replyOntime = res.data["按期答复率"];
+            participate = res.data["参评率"];
+            PetitionOntime = res.data["信访部门及时受理率"];
+            unitOntime = res.data["责任单位及时受理率"];
+            MyEcharts.initChart(MyEcharts.EchartsOption.dataspie(scheduled[0], replyOntime[0], participate[0]), "SmallECharts232") //按期办结、按期答复 、参评
+        })
+        var unitProbability = ObservationUnitProbability(location);
+        unitProbability.then(res=>{
+            unitOntimeDone = res.data["责任单位及时受理率"];
+            unitPleased = res.data["责任单位满意率"];
+            departmentOntimeDone = res.data["信访部门及时受理率"];
+            departmentPleased = res.data["信访部门满意率"];
+            MyEcharts.initChart(MyEcharts.EchartsOption.datapie(unitOntimeDone[0], unitPleased[0],departmentOntimeDone[0],departmentPleased[0]), "SmallECharts23")
+        })
+    }
+    //词云
+    function sineclond() {
+        var i = 0;
+        var oTag = null;
+
+        oDiv = document.getElementById('rotate');
+
+        aA = oDiv.getElementsByTagName('a');
+
+        for (i = 0; i < aA.length; i++) {
+            oTag = {};
+
+            oTag.offsetWidth = aA[i].offsetWidth;
+            oTag.offsetHeight = aA[i].offsetHeight;
+
+            mcList.push(oTag);
+        }
+
+        sineCosine(0, 0, 0);
+
+        positionAll();
+
+        oDiv.onmouseover = function () {
+            active = true;
+        };
+
+        oDiv.onmouseout = function () {
+            active = false;
+        };
+
+        oDiv.onmousemove = function (ev) {
+            var oEvent = window.event || ev;
+
+            mouseX = oEvent.clientX - (oDiv.offsetLeft + oDiv.offsetWidth / 2);
+            mouseY = oEvent.clientY - (oDiv.offsetTop + oDiv.offsetHeight / 2);
+
+            mouseX /= 5;
+            mouseY /= 5;
+        };
+
+        setInterval(update, 30);
+    }
+    function update() {
+        var a;
+        var b;
+
+        if (active) {
+            a = (-Math.min(Math.max(-mouseY, -size), size) / radius) * tspeed;
+            b = (Math.min(Math.max(-mouseX, -size), size) / radius) * tspeed;
+        } else {
+            a = lasta * 0.98;
+            b = lastb * 0.98;
+        }
+
+        lasta = a;
+        lastb = b;
+
+        if (Math.abs(a) <= 0.01 && Math.abs(b) <= 0.01) {
+            return;
+        }
+
+        var c = 0;
+        sineCosine(a, b, c);
+        for (var j = 0; j < mcList.length; j++) {
+            var rx1 = mcList[j].cx;
+            var ry1 = mcList[j].cy * ca + mcList[j].cz * (-sa);
+            var rz1 = mcList[j].cy * sa + mcList[j].cz * ca;
+
+            var rx2 = rx1 * cb + rz1 * sb;
+            var ry2 = ry1;
+            var rz2 = rx1 * (-sb) + rz1 * cb;
+
+            var rx3 = rx2 * cc + ry2 * (-sc);
+            var ry3 = rx2 * sc + ry2 * cc;
+            var rz3 = rz2;
+
+            mcList[j].cx = rx3;
+            mcList[j].cy = ry3;
+            mcList[j].cz = rz3;
+
+            per = d / (d + rz3);
+
+            mcList[j].x = (howElliptical * rx3 * per) - (howElliptical * 2);
+            mcList[j].y = ry3 * per;
+            mcList[j].scale = per;
+            mcList[j].alpha = per;
+
+            mcList[j].alpha = (mcList[j].alpha - 0.6) * (10 / 6);
+        }
+
+        doPosition();
+        depthSort();
+    }
+    function depthSort() {
+        var i = 0;
+        var aTmp = [];
+
+        for (i = 0; i < aA.length; i++) {
+            aTmp.push(aA[i]);
+        }
+
+        aTmp.sort
+        (
+            function (vItem1, vItem2) {
+                if (vItem1.cz > vItem2.cz) {
+                    return -1;
+                } else if (vItem1.cz < vItem2.cz) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        );
+
+        for (i = 0; i < aTmp.length; i++) {
+            aTmp[i].style.zIndex = i;
+        }
+    }
+    function positionAll() {
+        var phi = 0;
+        var theta = 0;
+        var max = mcList.length;
+        var i = 0;
+
+        var aTmp = [];
+        var oFragment = document.createDocumentFragment();
+
+
+        for (i = 0; i < aA.length; i++) {
+            aTmp.push(aA[i]);
+        }
+
+        aTmp.sort
+        (
+            function () {
+                return Math.random() < 0.5 ? 1 : -1;
+            }
+        );
+
+        for (i = 0; i < aTmp.length; i++) {
+            oFragment.appendChild(aTmp[i]);
+        }
+
+        oDiv.appendChild(oFragment);
+
+        for (var i = 1; i < max + 1; i++) {
+            if (distr) {
+                phi = Math.acos(-1 + (2 * i - 1) / max);
+                theta = Math.sqrt(max * Math.PI) * phi;
+            } else {
+                phi = Math.random() * (Math.PI);
+                theta = Math.random() * (2 * Math.PI);
+            }
+
+            mcList[i - 1].cx = radius * Math.cos(theta) * Math.sin(phi);
+            mcList[i - 1].cy = radius * Math.sin(theta) * Math.sin(phi);
+            mcList[i - 1].cz = radius * Math.cos(phi);
+
+            aA[i - 1].style.left = mcList[i - 1].cx + oDiv.offsetWidth / 2 - mcList[i - 1].offsetWidth / 2 + 'px';
+            aA[i - 1].style.top = mcList[i - 1].cy + oDiv.offsetHeight / 2 - mcList[i - 1].offsetHeight / 2 + 'px';
+        }
+    }
+    function doPosition() {
+        var l = oDiv.offsetWidth / 2;
+        var t = oDiv.offsetHeight / 2;
+        for (var i = 0; i  < mcList.length; i++) {
+            aA[i].style.left = mcList[i].cx + l - mcList[i].offsetWidth / 2 + 'px';
+            aA[i].style.top = mcList[i].cy + t - mcList[i].offsetHeight / 2 + 'px';
+
+            aA[i].style.fontSize = Math.ceil(12 * mcList[i].scale / 2) + 8 + 'px';
+
+            aA[i].style.filter = "alpha(opacity=" + 100 * mcList[i].alpha + ")";
+            aA[i].style.opacity = mcList[i].alpha;
+        }
+    }
+
+    function sineCosine(a, b, c) {
+        sa = Math.sin(a * dtr);
+        ca = Math.cos(a * dtr);
+        sb = Math.sin(b * dtr);
+        cb = Math.cos(b * dtr);
+        sc = Math.sin(c * dtr);
+        cc = Math.cos(c * dtr);
+    }
+    //定时函数汇总
+    function intervalFunction(){
+        var time=1000*60
+        setInterval(ObservationStationFun,time) //一个小时获取一次最新的防汛概览
+    }
+
+
+
+</script>
+</html>

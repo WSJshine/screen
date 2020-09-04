@@ -1,0 +1,16 @@
+{
+  "id": "2006858",
+  "name": "screen",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "16545443",
+      "name": "邮政服务",
+      "font_class": "youzhengfuwu",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    }
+  ]
+}
